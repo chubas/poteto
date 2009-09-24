@@ -1,0 +1,143 @@
+/********** TITLE SECTION **********/
+
+.comic_title {
+	width: 740px;
+	min-width: 740px;
+	padding: 0 10px;
+	border-bottom: 1px dashed gray;
+	font-size: large;
+	font-weight: bold;
+	position: relative;
+	font-family: Verdana,Tahoma,Arial,sans-serif;
+	text-align: center;
+	height: 1.2em;
+	display: inline;
+}
+
+/********** GENERAL COMIC BOX SECTION **********/
+
+table#boxes {
+	border-collapse: collapse;
+	margin: 10px auto;
+}
+
+td.comic_box_container {
+	width: 250px;
+	height: 340px;
+	vertical-align: top;
+	border: 4px solid black;
+}
+
+.comic_box {
+	width: 250px;
+	height: 340px;	
+	padding: 0;
+	margin: 0;
+	background: #EEEEEE;
+	position: relative;
+}
+
+.comic_box_contents {
+	border-top: 4px solid black;
+	border-bottom: 4px solid black;
+	border-right: 4px solid black;
+	height: 100%;
+	position: relative;
+}
+
+#comic_box_1_contents {
+	border-left: 4px solid black;
+}
+
+/********** NARRATION SECTION **********/
+
+.comic_box_narration {
+	background: yellow;
+	border-bottom: solid 2px black;
+	top: 0;
+	left: 0;
+	max-height: 50px;
+	padding: 5px;
+	font-size: small;
+	font-family: "Lucida Grande", Helvetica, Verdana, sans-serif;
+}
+
+/********** CHARACTERS SECTION **********/
+
+.comic_box_left_char {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 115px;
+	height: 180px;
+}
+
+.comic_box_right_char {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	width: 115px;
+	height: 180px;
+}
+
+/*************** DIALOGUES SECTION ***************/
+
+.comic_box_dialogue_left_wrapper {
+	position: absolute;
+	max-width: 110px;
+	max-height: 120px;
+	overflow: hidden;
+	font-size: small;
+	bottom: 183px;
+	right: 125px;
+	float: left;
+}
+
+.comic_box_dialogue_tl {
+	background: transparent url(/imgs/balloon_tl.gif) no-repeat scroll left top;
+	padding-left: 10px;
+	min-height: 1em;
+	min-width: 3em;
+}
+.comic_box_dialogue_tr {
+	background: transparent url(/imgs/balloon_tr.gif) no-repeat scroll right top;
+	padding-right: 10px;
+	padding-top: 5px;
+	border: 0;
+	min-height: 10px;
+	max-width: 100px;
+	margin: 0;
+}
+
+.comic_box_dialogue_left_bl{
+	background: transparent url(/imgs/balloon_left_bl.gif) no-repeat scroll left top;
+	padding-left: 10px;
+	height: 20px;
+}
+
+.comic_box_dialogue_left_br{	
+	background: transparent url(/imgs/balloon_left_br.gif) no-repeat scroll right top;
+	padding-right: 10px;
+	height: 20px;
+}
+.comic_box_dialogue_right_bl{
+	background: transparent url(/imgs/balloon_right_bl.gif) no-repeat scroll left top;
+	padding-right: 10px;
+	height: 20px;
+}
+
+.comic_box_dialogue_right_br{	
+	background: transparent url(/imgs/balloon_right_br.gif) no-repeat scroll right top;
+	padding-right: 10px;
+	height: 20px;
+}
+.comic_box_dialogue_right_wrapper {
+	position: absolute;
+	max-width: 110px;
+	max-height: 120px;
+	overflow: hidden;
+	font-size: small;
+	bottom: 183px;
+	left: 125px;
+	float: right;
+}

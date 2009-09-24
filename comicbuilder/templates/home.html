@@ -1,0 +1,27 @@
+<!-- NEEDS CSS -->
+
+{% extends "base.html" %}
+
+{% block main_content %}
+	
+	<div id="latest_comics" style="padding:20px;">
+		<div>
+			<h1>Latest comics</h1>
+		</div>
+		{% if latest %}
+			<ul>
+				{% for comic in latest %}
+					<li>
+						<a href="{{ comic.get_absolute_url }}">
+							{{ comic.title }}
+						</a> - by {{ comic.creator }} <br />
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			There are no comics...
+			<br />
+			<a href="create"> Create </a>
+		{% endif %}
+	</div>
+{% endblock %}
