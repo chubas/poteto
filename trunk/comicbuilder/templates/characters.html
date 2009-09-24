@@ -1,0 +1,7 @@
+{% for char in characters %}
+	<div>
+		<img src="{{ char.image.url }}" class="character"
+				 id="character_{{ char.id }}" height="100px"/>
+	</div>
+{% endfor %}
+

@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block extraheaders %}
+	<link rel="stylesheet" type="text/css" href="/styles/comic.css">
+	<link rel="stylesheet" type="text/css" href="/styles/comic_builder_controls.css">
+	<script type="text/javascript" src="/javascript/prototype.js"></script>
+	<script type="text/javascript" src="/javascript/scriptaculous.js"></script>
+{% endblock %}
+
+{% block main_content %}
+	<div id="controls">
+
+		<!-- Start form controls -->
+		<form id="comic_builder_controls" action="/save/" method="post">
+			<div id="controls_sidebar">
+
+				<div id="character_toolbar">
+
+					<div id="character_toolbar_title" class="toolbar_title"> Characters </div>
+
+					<div id="character_scroll_box">
+						<div id="char_profiles">
+							<select name="character_selector" id="character_selector"
+											onChange="show_characters_for(this.options[this.selectedIndex].value)">
+							{% for char in char_profiles %}
+								<option value="{{ char.id }}"> {{ char.name }}
+							{% endfor %}
+							</select>
+						</div>
+						<div id="characters_scroll_up" class="scroller">
+							<img src="/imgs/scroll_up.gif" />
+						</div>
+						<div id="characters"></div>
+						<div id="characters_scroll_down" class="scroller">
+							<img src="/imgs/scroll_down.gif" />
+						</div>
+					</div>
+
+				</div>
+
+				<div id="background_toolbar">
+
+					<div id="background_toolbar_title" class="toolbar_title"> Backgrounds </div>
+
+					<div id="background_scroll_box" style="display:none;">
+						<div id="backgrounds_scroll_up" class="scroller">
+							<img src="/imgs/scroll_up.gif" />
+						</div>
+						<div id="backgrounds">
+							{% for background in backgrounds %}
+								<img src="{{ background.image.url }}" class="background"
+										id="background_{{ background.id }}" width="100px">
+							{% endfor %}
+						</div>
+						<div id="backgrounds_scroll_down" class="scroller">
+							<img src="/imgs/scroll_down.gif" />
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<!-- Start boxes controls -->
+			<div id="boxes_controls">
+				<div style="margin:auto; text-align:center; padding:20px 0 10px 0; min-height:1em;">
+					<div id="comic_title" class="comic_title" whenEditing="1" style="cursor:pointer; min-height:1em;">
+						Title here.
+					</div>
+				</div>
+				<table id="boxes">
+					<tr>
+						{% for i in 123|make_list %}
+							<td id="comic_box_{{ i }}" class="comic_box">
+								<div id="comic_box_{{ i }}_contents" class="comic_box_contents" box="{{i}}">
+
+									<div id="comic_box_narration_{{ i }}" class="comic_box_narration"
+											whenEditing="3"
+											style="opacity:0.2;"
+											onMouseover="_setOpacity($(this), '1.0')"
+											onMouseout="setDialogueOpacity($(this));">
+									</div>
+
+									<div id="comic_box_dialogues_{{ i }}" class="comic_box_dialogues">
+										<div id="comic_box_dialogue_left{{i}}_wrapper"
+												class="comic_box_dialogue_left_wrapper"
+												style="opacity:0.2;"
+												onMouseover="_setOpacity($(this), '1')"
+												onMouseout="setDialogueOpacity($('comic_box_dialogue_left{{i}}'));">
+											<div class="comic_box_dialogue_tl">
+												<div id="comic_box_dialogue_left{{i}}"
+														whenEditing="5"
+														class="comic_box_dialogue_tr">
+												</div>
+											</div>
+											<div class="comic_box_dialogue_left_bl">
+												<div class="comic_box_dialogue_left_br">
+												</div>
+											</div>
+										</div>
+
+										<div id="comic_box_dialogue_right{{i}}_wrapper"
+												class="comic_box_dialogue_right_wrapper"
+												style="opacity:0.2;"
+												onMouseover="_setOpacity($(this), '1.0')"
+												onMouseout="setDialogueOpacity($('comic_box_dialogue_right{{i}}'));">
+											<div class="comic_box_dialogue_tl">
+												<div id="comic_box_dialogue_right{{i}}"
+														whenEditing="5"
+														class="comic_box_dialogue_tr">
+
+												</div>
+											</div>
+											<div class="comic_box_dialogue_right_br">
+												<div class="comic_box_dialogue_right_bl">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="comic_box_characters">
+										<div id="comic_box_{{ i }}_left_char" class="comic_box_left_char"
+											box="{{ i }}" place="left">
+										</div>
+										<div id="comic_box_{{ i }}_right_char" class="comic_box_right_char"
+											box="{{ i }}" place="right">
+										</div>
+									</div>
+
+								</div>
+
+							</td>
+
+						{% endfor %}
+					</tr>
+				</table>
+				<div style="text-align: center; position: relative; margin-left: 130px;">
+					<select name="num_boxes" id="num_boxes">
+						<option value="3"> 3
+						<option value="2"> 2
+						<option value="1"> 1
+					</select>
+					<label for="num_boxes">Number of boxes</label>
+					<div style="padding:10px;">
+						<textarea name="description"></textarea>
+						<br />
+						<label for="description">Add a little description or comment about your comic</label>
+					</div>
+					<div style="padding:10px;">
+						{% if user.is_authenticated %}
+							<input type="button" class="submit_button" value="Save!" onClick="submit_comic()">
+						{% else %}
+							<div class="submit_disabled">
+								You need to be <a href="/register">registered</a> to save your comics!
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<input type="hidden" name="creator" value="{{ user.id }}">
+			<input type="hidden" name="title" value="">
+			<input type="hidden" name="narration_1" value="">
+			<input type="hidden" name="narration_2" value="">
+			<input type="hidden" name="narration_3" value="">
+			<input type="hidden" name="dialogue_1_left" value="">
+			<input type="hidden" name="dialogue_1_right" value="">
+			<input type="hidden" name="dialogue_2_left" value="">
+			<input type="hidden" name="dialogue_2_right" value="">
+			<input type="hidden" name="dialogue_3_left" value="">
+			<input type="hidden" name="dialogue_3_right" value="">
+			<input type="hidden" name="character_1_left" value="">
+			<input type="hidden" name="character_1_right" value="">
+			<input type="hidden" name="character_2_left" value="">
+			<input type="hidden" name="character_2_right" value="">
+			<input type="hidden" name="character_3_left" value="">
+			<input type="hidden" name="character_3_right" value="">
+			<input type="hidden" name="background_1" value="">
+			<input type="hidden" name="background_2" value="">
+			<input type="hidden" name="background_3" value="">
+			<!-- end boxes controls -->
+		</form>
+		<!-- end form controls -->
+	</div>
+
+	<div id="placeholder"></div>
+
+	<!-- Tooltips section -->
+		<div id="tooltip_edit_box" style="display:none" class="tooltip">
+			Click to edit...
+		</div>
+		<div id="tooltip_character_drag_box" style="display:none" class="tooltip">
+			Drag and drop a character here...
+		</div>
+		<div id="tooltip_background_drag_box" style="display:none" class="tooltip">
+			Drag and drop a background here...
+		</div>
+	<!-- end tooltips section -->
+
+	<script type="text/javascript" src="/javascript/tooltip.js"></script>
+	<script type="text/javascript" src="/javascript/comic_builder_controls.js"></script>
+{% endblock %}
+

@@ -1,0 +1,96 @@
+
+<div style="margin:auto; text-align:center; padding:20px 0 10px 0; min-height:1em;">
+	<div id="comic_title" class="comic_title" style="min-height:1em; border:none;">
+		{{ comic.title }}
+	</div>
+</div>
+<table id="boxes">
+	<tr>
+		{% for comic_iter in comic.iterator_for_template %}
+			<td id="comic_box_{{comic_iter.i}}" class="comic_box">
+				<div id="comic_box_{{comic_iter.i}}_contents" class="comic_box_contents"
+					{% if comic_iter.background %}
+						style="background: #EEEEEE url({{ comic_iter.background.image.url }})
+							no-repeat scroll top left;"
+					{% endif %}
+				>
+
+					{% if comic_iter.narration %}
+						<div id="comic_box_narration_{{comic_iter.i}}" class="comic_box_narration">
+							{{ comic_iter.narration|escape }}
+						</div>
+					{% endif %}
+
+					<div id="comic_box_dialogues_{{comic_iter.i}}" class="comic_box_dialogues">
+
+						{% if comic_iter.left.dialogue %}
+							<div id="comic_box_dialogue_left{{comic_iter.i}}_wrapper"
+									class="comic_box_dialogue_left_wrapper">
+								<div class="comic_box_dialogue_tl">
+									<div id="comic_box_dialogue_left{{comic_iter.i}}"
+											class="comic_box_dialogue_tr">
+										{{ comic_iter.left.dialogue|escape }}
+									</div>
+								</div>
+								<div class="comic_box_dialogue_left_bl">
+									<div class="comic_box_dialogue_left_br">
+
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+						{% if comic_iter.right.dialogue %}
+							<div id="comic_box_dialogue_right{{comic_iter.i}}_wrapper"
+									class="comic_box_dialogue_right_wrapper">
+								<div class="comic_box_dialogue_tl">
+									<div id="comic_box_dialogue_right{{comic_iter.i}}"
+											class="comic_box_dialogue_tr">
+											{{ comic_iter.right.dialogue|escape }}
+									</div>
+								</div>
+								<div class="comic_box_dialogue_right_br">
+									<div class="comic_box_dialogue_right_bl">
+									</div>
+								</div>
+							</div>
+						{% endif %}
+
+					</div>
+
+					<div class="comic_box_characters">
+						{% if comic_iter.left.character %}
+							<div id="comic_box_{{comic_iter.i}}_left_char" class="comic_box_left_char"
+								style="background:
+									transparent
+									url({{ comic_iter.left.character.image.url }})
+									no-repeat scroll bottom left;">
+							</div>
+						{% endif %}
+						{% if comic_iter.right.character %}
+							<div id="comic_box_{{comic_iter.i}}_right_char" class="comic_box_right_char"
+								style="background:
+									transparent
+									url({{ comic_iter.right.character.image.url }})
+									no-repeat scroll bottom right;">
+							</div>
+						{% endif %}
+					</div>
+
+				</div>
+
+			</td>
+		{% endfor %}
+	</tr>
+	<tr>
+		<td colspan="{{ comic.num_boxes }}">
+			<div id="created" style="text-align:right; font-size:x-small; padding:2px">
+				Created by {{ comic.creator.username }} on {{ comic.created_on|date:"d/n/Y"}}
+			</div>
+			<div id="comment" style="text-align:right; font-style:italic; font-size:x-small;">
+				{{ comic.description }}
+			</div>
+		</td>
+	</tr>
+</table>
+

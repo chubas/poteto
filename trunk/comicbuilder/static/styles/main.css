@@ -1,0 +1,90 @@
+body {
+	font-family: Verdana,Tahoma,Arial,sans-serif;
+	background: #AAAABB;
+}
+
+#body_header {
+	background: transparent url(/imgs/titlebar_left.gif) no-repeat scroll top left;
+	position: relative;
+	padding-left: 18px;
+}
+
+#title {
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 5px 0 0 50px;
+	color: white;
+	background: transparent url(/imgs/titlebar_center.gif) repeat-x scroll top left;
+	margin-right: 18px;
+}
+
+#title span {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 18px;
+	height: 100%;
+	background: transparent url(/imgs/titlebar_right.gif) no-repeat scroll top left;
+}
+
+#user_info {
+	padding-top: 20px;
+	padding-right: 18px;
+	width: 350px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+#user_info a {
+	text-decoration: none;
+	color: #000099;
+	font-weight: bold;
+}
+
+.username {
+	font-weight: bold;
+	color: #990000;
+}
+
+#main_content {
+	border-left: 2px solid #175496;
+	border-right: 2px solid #175496;
+	background-color: #BBBBFF;
+}
+
+#menu {
+	text-align: right;
+	padding: 1px;
+	font-size: small;
+	font-weight: bold;
+	background: #175496;
+	color: white;
+}
+
+#menu li {
+	list-style: none;
+	display: inline;
+	padding: 0 10px;
+	border-left: 1px solid white;
+}
+
+#menu li a {
+	text-decoration: none;
+	color: white;
+}
+
+#menu li a:hover {
+	color: #2385EE;
+}
+
+#menu li a.disabled_link {
+	color: gray;
+}
+
+#footer {
+	background: #2385EE;
+	padding: 10px;
+	font-size: x-small;
+	text-align: right
+}

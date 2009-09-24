@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block extraheaders %}
+	<script type="text/javascript" src="/javascript/prototype.js"></script>
+	<link rel="stylesheet" type="text/css" href="/styles/comic.css">
+{% endblock %}
+
+{% block main_content %}
+	<div id="comic_show">
+		<script type="text/javascript">
+			new Ajax.Updater(
+				'comic_show',
+				'/comic/' + {{ comic_to_show }} + '/'
+			)
+		</script>
+		<div style="padding:100px;">
+			Loading...
+		</div>
+	</div>
+{% endblock %}

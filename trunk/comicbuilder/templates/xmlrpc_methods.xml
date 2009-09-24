@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions>
+	<portType name="xmlrpc_handler">
+		{% for method in methods %}
+			<operation name="{{ method.name }}">
+				<help message="{{ method.help }}" />
+				<signature message="{{ method.signature }}"/>
+			</operation>
+		{% endfor %}
+	</portType>
+</definitions>

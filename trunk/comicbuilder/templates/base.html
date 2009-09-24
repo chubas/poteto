@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/styles/main.css">
+		{% block extraheaders %}
+		{% endblock %}
+		<title>
+			{% block title %}
+			{% endblock %}
+		</title>
+	</head>
+	<body>
+		<div id="body_header">
+			{% block header %}
+				<div id="title">
+					<span>
+					</span>
+					<img src="/imgs/poteto_logo.gif" />
+				</div>
+			{% endblock %}
+			{% block user_info %}
+				<div id="user_info">
+					{% if user.is_authenticated %}
+						Logged in as <span class="username">{{ user.username }}</span>! <br />
+						<a href="/logout">Logout</a>
+					{% else %}
+						<a href="/login">Login</a> or <a href="/register">register!</a>
+					{% endif %}
+				</div>
+			{% endblock %}
+		</div>
+		<div id="menu">
+			{% block menu %}
+				<ul>
+					<li><a href="/"> Home </a></li>
+					<li><a href="/create"> Create </a></li>
+					<li><a class="disabled_link"> Browse </a></li>
+					<li><a class="disabled_link"> About </a></li>
+				</ul>
+			{% endblock %}
+		</div>
+		<div id="main_content">
+			{% block main_content %}
+			{% endblock %}
+		</div>
+		<div id="footer">
+			{% block footer %}
+				&copy; 2008 - Poteto Team
+			{% endblock %}
+		</div>
+		<div id="errors">
+			{% block errors %}
+			{% endblock %}
+		</div>
+	</body>
+</html>

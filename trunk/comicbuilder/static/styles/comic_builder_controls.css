@@ -1,0 +1,140 @@
+/********** SIDEBAR SECTION **********/
+
+#controls_sidebar {
+	float: left;
+	width: 130px;
+	background: #175496;
+	padding: 5px;
+	min-height: 350px;
+}
+
+.toolbar_title {
+	background: red;
+	font-size: small;
+	font-weight: bold;
+	padding-left: 20px;
+	cursor: pointer;
+	height: 18px;
+}
+
+#character_toolbar_title {
+	background: transparent url(/imgs/title_bar_show.gif) no-repeat scroll top left;
+}
+
+#background_toolbar_title {
+	background: transparent url(/imgs/title_bar_hide.gif) no-repeat scroll top left;
+}
+
+#characters,
+#backgrounds {
+	position: relative;
+	text-align: center;
+	margin: 0 5px;
+	height: 260px;
+	overflow: hidden;
+	background: #DDDDFF;
+	width: 120px;
+}
+
+#char_profiles {
+	padding: 5px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.scroller {
+	cursor: pointer;
+	text-align: center;
+	margin: 5px 0 2px 0;
+}
+
+img.character_profile,
+img.character,
+img.background {
+	cursor: pointer;
+	margin: 3px;
+}
+
+/********** GENERAL COMIC BOX SECTION **********/
+
+.comic_box_background_hover {
+	background: #2385EE;
+	opacity: 0.5;
+}
+.comic_box_character_hover {
+	background: #2385EE;
+	opacity: 0.5;
+}
+
+/********** NARRATION SECTION **********/
+
+textarea.comic_box_narration {
+	margin: 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: solid 2px black;
+	width: 232px;
+	max-height: 50px;
+}
+
+/********** SUMBIT SECTION **********/
+
+.submit_button {
+	padding: 10px 20px;
+	background: #175496;
+	color: white;
+	font-weight: bold;
+	font-size: large;
+	border: 2px groove white;
+	cursor: pointer;
+}
+
+.submit_disabled {
+	padding: 10px 20px;
+	background: yellow;
+	color: red;
+	font-weight: bold;
+	font-size: large;
+}
+
+.submit_disabled a {
+	text-decoration: none;
+	font-size: 1.2em;
+	color: #000099;
+}
+
+/*************** DIALOGUES SECTION ***************/
+
+textarea.comic_box_dialogue_tr {
+	font-family: Verdana,Tahoma,Arial,sans-serif;
+	font-size: small;
+}
+
+/*************** TOOLTIP SECTION ***************/
+
+.tooltip {
+	padding: 3px;
+	font-size: x-small;
+	font-weight: bold;
+	background: lightyellow;
+	color: blue;
+	border: 1px dashed gray;
+}
+
+/*************** MISC SECTION ***************/
+
+#num_boxes_controls {
+	text-align: center;
+}
+
+select {
+	border: 1px solid blue;
+	color: blue;
+	font-weight: bold;
+	font-size: small;
+}
+
+label {
+	font-size: x-small;
+}
